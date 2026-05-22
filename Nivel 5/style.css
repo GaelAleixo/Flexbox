@@ -1,0 +1,64 @@
+/* Reset básico */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Essencial para permitir o empilhamento */
+  padding: 1rem 2rem;
+  background-color: #19063d;
+  color: #b3de8c;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: #b3de8c;
+  text-decoration: none;
+}
+
+/* Regra para telas menores que 600px */
+@media (max-width: 600px) {
+  .navbar {
+    justify-content: center; /* Centraliza a logo no topo */
+    text-align: center;
+  }
+
+  .nav-links {
+    flex-direction: column; /* Empilha os links verticalmente */
+    width: 100%;           /* Garante que ocupem toda a largura */
+    margin-top: 1rem;
+    gap: 10px;
+  }
+}
+
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap; /* Permite que os cards pulem de linha */
+  gap: 20px;       /* Espaçamento entre os cards */
+  justify-content: center; /* Centraliza os cards caso sobre espaço */
+  padding: 20px;
+}
+
+.card {
+  width: 200px;    /* Largura fixa sugerida */
+  flex-grow: 1;    /* Permite que o card cresça para ocupar espaço vazio */
+  flex-basis: 200px; /* Define o tamanho ideal de 200px */
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.card img {
+  max-width: 10%;
+  height: auto;
+  border-radius: 4px;
+}
+
