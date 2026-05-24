@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,7 +24,7 @@
         }
     </script>
     <style>
-        /* Ajustes finos de scroll e transições */
+        /* Ajustes finos de barra de rolagem e transições */
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: #f8fafc;
@@ -44,7 +44,7 @@
             transform: scale(1.02);
             transition: all 0.2s ease;
         }
-        /* Gradientes e sombras exclusivas */
+        /* Painéis com efeito fosco */
         .glass-panel {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(8px);
@@ -53,7 +53,7 @@
 </head>
 <body class="min-h-screen text-slate-800 flex flex-col antialiased">
 
-    <!-- HEADER / HERO -->
+    <!-- CABEÇALHO / HERO -->
     <header class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white border-b border-indigo-500/20 py-6 px-4 sm:px-8 shadow-md">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
             <div class="flex items-center gap-3">
@@ -64,7 +64,7 @@
                     <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-indigo-200 to-indigo-100">
                         Flexbox Master
                     </h1>
-                    <p class="text-xs sm:text-sm text-indigo-200/80 font-medium">Guia Teórico Completo & Playground Interativo Dinâmico</p>
+                    <p class="text-xs sm:text-sm text-indigo-200/80 font-medium">Guia Teórico Completo & Playground Interativo Dinâmico (pt-PT)</p>
                 </div>
             </div>
             
@@ -83,10 +83,9 @@
     <!-- CONTAINER PRINCIPAL -->
     <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8">
 
-        <!-- ==================== ABA 1: PLAYGROUND (PADRÃO) ==================== -->
+        <!-- ==================== ABA 1: PLAYGROUND ==================== -->
         <section id="tab-playground" class="space-y-6">
             
-            <!-- Painel Geral com Controles e Grid -->
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
                 
                 <!-- COLUNA ESQUERDA: CONTROLES DO CONTAINER (PAI) -->
@@ -97,18 +96,19 @@
                             <h2 class="font-bold text-slate-900 text-lg">Flex Container</h2>
                         </div>
                         <button onclick="resetContainer()" class="text-xs font-semibold text-indigo-600 hover:text-indigo-800 flex items-center gap-1 transition" title="Restaurar valores iniciais">
-                            <i class="fa-solid fa-rotate-left"></i> Resetar
+                            <i class="fa-solid fa-rotate-left"></i> Reiniciar
                         </button>
                     </div>
 
                     <!-- Controle: display -->
                     <div class="space-y-1.5">
                         <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider">display</label>
-                        <div class="grid grid-cols-2 gap-2">
-                            <button id="disp-flex" onclick="updateProp('display', 'flex')" class="py-2 px-3 text-sm font-semibold rounded-lg border border-indigo-600 bg-indigo-50 text-indigo-700 transition">flex</button>
-                            <button id="disp-inline" onclick="updateProp('display', 'inline-flex')" class="py-2 px-3 text-sm font-semibold rounded-lg border border-slate-200 hover:border-indigo-600 text-slate-600 transition">inline-flex</button>
+                        <div class="grid grid-cols-3 gap-2">
+                            <button id="disp-flex" onclick="updateProp('display', 'flex')" class="py-1.5 px-2 text-xs sm:text-sm font-semibold rounded-lg border border-indigo-600 bg-indigo-50 text-indigo-700 transition">flex</button>
+                            <button id="disp-inline" onclick="updateProp('display', 'inline-flex')" class="py-1.5 px-2 text-xs sm:text-sm font-semibold rounded-lg border border-slate-200 hover:border-indigo-600 text-slate-600 transition">inline-flex</button>
+                            <button id="disp-none" onclick="updateProp('display', 'none')" class="py-1.5 px-2 text-xs sm:text-sm font-semibold rounded-lg border border-slate-200 hover:border-red-600 text-slate-600 hover:text-red-600 hover:bg-red-50 transition" title="Oculta o container inteiro">none</button>
                         </div>
-                        <p class="text-[11px] text-slate-400 italic">Ativa o contexto flexível para os elementos filhos.</p>
+                        <p class="text-[11px] text-slate-400 italic">Ativa o contexto flexível ou oculta (none) o elemento pai.</p>
                     </div>
 
                     <!-- Controle: flex-direction -->
@@ -122,6 +122,7 @@
                             <option value="row-reverse">row-reverse (Linha invertida)</option>
                             <option value="column">column (Coluna vertical)</option>
                             <option value="column-reverse">column-reverse (Coluna invertida)</option>
+                            <option value="none" class="text-red-500 font-semibold">none (Desativado / Sem efeito)</option>
                         </select>
                         <p class="text-[11px] text-slate-400 italic">Determina o eixo principal do layout.</p>
                     </div>
@@ -138,7 +139,8 @@
                             <option value="center">center (Centralizado no eixo principal)</option>
                             <option value="space-between">space-between (Bordas coladas, espaço interno igual)</option>
                             <option value="space-around">space-around (Margens iguais ao redor dos itens)</option>
-                            <option value="space-evenly">space-evenly (Espaçamentos idênticos em toda parte)</option>
+                            <option value="space-evenly">space-evenly (Espaçamentos idênticos em toda a parte)</option>
+                            <option value="none" class="text-red-500 font-semibold">none (Desativado / Sem efeito)</option>
                         </select>
                         <p class="text-[11px] text-slate-400 italic">Alinha e distribui os itens ao longo do eixo principal.</p>
                     </div>
@@ -155,8 +157,9 @@
                             <option value="flex-end">flex-end (Alinhado à base)</option>
                             <option value="center">center (Centralizado verticalmente)</option>
                             <option value="baseline">baseline (Alinhado pela linha base do texto)</option>
+                            <option value="none" class="text-red-500 font-semibold">none (Desativado / Sem efeito)</option>
                         </select>
-                        <p class="text-[11px] text-slate-400 italic">Alinha itens ao longo do eixo transversal.</p>
+                        <p class="text-[11px] text-slate-400 italic">Alinha os itens ao longo do eixo transversal.</p>
                     </div>
 
                     <!-- Controle: flex-wrap -->
@@ -169,6 +172,7 @@
                             <option value="nowrap" selected>nowrap (Sem quebra - Padrão)</option>
                             <option value="wrap">wrap (Permitir quebra de linha)</option>
                             <option value="wrap-reverse">wrap-reverse (Quebra invertida)</option>
+                            <option value="none" class="text-red-500 font-semibold">none (Desativado / Sem efeito)</option>
                         </select>
                         <p class="text-[11px] text-slate-400 italic">Controla o comportamento ao estourar a largura útil.</p>
                     </div>
@@ -185,20 +189,27 @@
                             <option value="center">center (Agrupar ao centro)</option>
                             <option value="space-between">space-between (Distribui entre as pontas)</option>
                             <option value="space-around">space-around (Margens iguais entre as linhas)</option>
+                            <option value="none" class="text-red-500 font-semibold">none (Desativado / Sem efeito)</option>
                         </select>
                         <p class="text-[11px] text-slate-400 italic">Alinha as linhas inteiras do container se houver espaço extra.</p>
                     </div>
 
-                    <!-- Controle: gap (Grid spacing) -->
+                    <!-- Controle: gap -->
                     <div class="space-y-1.5 pt-1">
-                        <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider">Gap (Espaçamento entre itens)</label>
-                        <div class="flex items-center gap-3">
+                        <div class="flex items-center justify-between">
+                            <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider">Gap (Espaçamento)</label>
+                            <button id="btn-none-gap" onclick="toggleGapNone()" class="text-[10px] font-bold px-2 py-0.5 rounded border border-slate-300 hover:border-red-500 hover:bg-red-50 text-slate-500 transition">
+                                <i class="fa-solid fa-ban"></i> Def. "none"
+                            </button>
+                        </div>
+                        <div class="flex items-center gap-3" id="gap-slider-wrapper">
                             <input id="range-gap" type="range" min="0" max="48" value="16" oninput="updateProp('gap', this.value + 'px')" class="flex-1 accent-indigo-600">
                             <span id="label-gap" class="text-sm font-bold bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-mono">16px</span>
                         </div>
+                        <p id="gap-none-indicator" class="text-xs text-red-500 font-semibold italic hidden">Propriedade gap definida como "none" (Suspensa).</p>
                     </div>
 
-                    <!-- Controle Adicional: Altura do Container de simulação -->
+                    <!-- Altura do simulador -->
                     <div class="space-y-1.5 pt-1">
                         <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider">Altura do Simulador</label>
                         <div class="flex items-center gap-3">
@@ -211,13 +222,13 @@
                 <!-- COLUNA DO MEIO & DIREITA: CONTAINER DE VISUALIZAÇÃO E CONTROLE DOS FILHOS -->
                 <div class="lg:col-span-8 flex flex-col gap-6">
                     
-                    <!-- ÁREA DO PLAYGROUND (CONTAINER FLEX REAL) -->
+                    <!-- ÁREA DO PLAYGROUND -->
                     <div class="bg-slate-950 rounded-2xl p-4 shadow-inner border border-slate-800 flex flex-col justify-between">
-                        <!-- Barra de ferramentas superior do visualizador -->
+                        <!-- Barra de ferramentas superior -->
                         <div class="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-slate-800 text-slate-300">
                             <div class="flex items-center gap-2">
                                 <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
-                                <span class="text-xs font-mono text-emerald-400">#sandbox-container { display: flex; }</span>
+                                <span id="visualizer-display-tag" class="text-xs font-mono text-emerald-400">#sandbox-container { display: flex; }</span>
                             </div>
                             <!-- Ações Rápidas de Itens -->
                             <div class="flex items-center gap-2">
@@ -225,15 +236,15 @@
                                     <i class="fa-solid fa-minus text-[10px]"></i> Item
                                 </button>
                                 <span id="current-item-count" class="text-xs font-mono font-bold bg-slate-900 border border-slate-800 px-2.5 py-1 rounded-lg">5 Itens</span>
-                                <button onclick="changeItemCount(1)" class="p-1 px-2.5 bg-indigo-600 hover:bg-indigo-500 text-xs font-bold rounded-lg text-white transition flex items-center gap-1">
+                                <button onclick="changeItemCount(1)" class="p-1 px-2.5 bg-indigo-600 hover:bg-indigo-50 text-xs font-bold rounded-lg text-white transition flex items-center gap-1">
                                     <i class="fa-solid fa-plus text-[10px]"></i> Item
                                 </button>
                             </div>
                         </div>
 
-                        <!-- O FLEX CONTAINER EM SI (ATUALIZADO REATIVAMENTE POR JS) -->
-                        <div id="sandbox-container" class="relative bg-slate-900 rounded-xl mt-4 transition-all duration-300 overflow-hidden" style="height: 350px;">
-                            <!-- Grid de marcação de fundo para facilitar percepção de alinhamentos -->
+                        <!-- O FLEX CONTAINER EM SI -->
+                        <div id="sandbox-container-wrapper" class="relative bg-slate-900 rounded-xl mt-4 transition-all duration-300 overflow-hidden" style="height: 350px;">
+                            <!-- Grid de marcação de fundo -->
                             <div class="absolute inset-0 grid grid-cols-12 grid-rows-6 opacity-5 pointer-events-none">
                                 <div class="border-b border-r border-white"></div><div class="border-b border-r border-white"></div><div class="border-b border-r border-white"></div><div class="border-b border-r border-white"></div><div class="border-b border-r border-white"></div><div class="border-b border-r border-white"></div><div class="border-b border-r border-white"></div><div class="border-b border-r border-white"></div><div class="border-b border-r border-white"></div><div class="border-b border-r border-white"></div><div class="border-b border-r border-white"></div><div class="border-b border-white"></div>
                                 <div class="border-b border-r border-white"></div><div class="border-b border-r border-white"></div><div class="border-b border-r border-white"></div><div class="border-b border-r border-white"></div><div class="border-b border-r border-white"></div><div class="border-b border-r border-white"></div><div class="border-b border-r border-white"></div><div class="border-b border-r border-white"></div><div class="border-b border-r border-white"></div><div class="border-b border-r border-white"></div><div class="border-b border-r border-white"></div><div class="border-b border-white"></div>
@@ -243,15 +254,15 @@
                                 <div class="border-r border-white"></div><div class="border-r border-white"></div><div class="border-r border-white"></div><div class="border-r border-white"></div><div class="border-r border-white"></div><div class="border-r border-white"></div><div class="border-r border-white"></div><div class="border-r border-white"></div><div class="border-r border-white"></div><div class="border-r border-white"></div><div class="border-r border-white"></div><div></div>
                             </div>
                             
-                            <!-- Itens filhos gerados de forma programática -->
+                            <!-- Elementos filhos gerados dinamicamente -->
                             <div id="flex-items-container" class="w-full h-full transition-all duration-300">
-                                <!-- Preenchido dinamicamente pelo JavaScript -->
+                                <!-- Preenchido por JS -->
                             </div>
                         </div>
 
-                        <!-- Nota explicativa rápida -->
+                        <!-- Nota explicativa -->
                         <div class="text-right text-[10px] text-slate-500 italic mt-2">
-                            * Clique em qualquer item acima para habilitar o controle de propriedades exclusivas de FILHO (Item Flex).
+                            * Clica em qualquer caixa acima para configurar propriedades exclusivas de FILHO (Flex Item).
                         </div>
                     </div>
 
@@ -262,50 +273,49 @@
                                 <span class="px-2 py-0.5 text-xs font-bold uppercase tracking-wider rounded bg-teal-100 text-teal-800">FILHO</span>
                                 <h2 class="font-bold text-slate-900 text-lg">Flex Item (<span id="selected-item-display">Nenhum Selecionado</span>)</h2>
                             </div>
-                            <span id="select-hint" class="text-xs text-slate-400 font-medium">Clique em um box para personalizar as propriedades dele individualmente</span>
+                            <span id="select-hint" class="text-xs text-slate-400 font-medium">Clica numa caixa para personalizar as propriedades dela individualmente</span>
                             <button id="btn-reset-item-props" onclick="resetActiveItemProps()" class="hidden text-xs font-semibold text-teal-600 hover:text-teal-800 flex items-center gap-1 transition">
                                 <i class="fa-solid fa-rotate-left"></i> Limpar Item
                             </button>
                         </div>
 
-                        <!-- Controles individuais desabilitados inicialmente -->
+                        <!-- Controles individuais -->
                         <div id="item-controls-overlay" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4 opacity-40 pointer-events-none transition-all duration-300">
                             
                             <!-- flex-grow -->
                             <div class="space-y-1">
-                                <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider flex justify-between">
-                                    <span>flex-grow</span>
-                                    <span class="text-[10px] text-teal-600 cursor-pointer" onclick="showHelpModal('flex-grow')"><i class="fa-regular fa-circle-question"></i></span>
-                                </label>
+                                <div class="flex items-center justify-between">
+                                    <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">flex-grow</label>
+                                    <button onclick="toggleItemNone('grow')" class="text-[9px] font-semibold text-red-500 hover:underline">none</button>
+                                </div>
                                 <input type="number" id="input-grow" min="0" max="10" value="0" oninput="updateItemProp('grow', this.value)" class="w-full bg-slate-50 border border-slate-200 rounded-lg py-1.5 px-3 text-sm font-semibold focus:ring-2 focus:ring-teal-500 outline-none text-slate-800">
-                                <p class="text-[9px] text-slate-400 italic">Capacidade de crescer.</p>
+                                <p id="hint-grow" class="text-[9px] text-slate-400 italic">Capacidade de crescer.</p>
                             </div>
 
                             <!-- flex-shrink -->
                             <div class="space-y-1">
-                                <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider flex justify-between">
-                                    <span>flex-shrink</span>
-                                    <span class="text-[10px] text-teal-600 cursor-pointer" onclick="showHelpModal('flex-shrink')"><i class="fa-regular fa-circle-question"></i></span>
-                                </label>
+                                <div class="flex items-center justify-between">
+                                    <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">flex-shrink</label>
+                                    <button onclick="toggleItemNone('shrink')" class="text-[9px] font-semibold text-red-500 hover:underline">none</button>
+                                </div>
                                 <input type="number" id="input-shrink" min="0" max="10" value="1" oninput="updateItemProp('shrink', this.value)" class="w-full bg-slate-50 border border-slate-200 rounded-lg py-1.5 px-3 text-sm font-semibold focus:ring-2 focus:ring-teal-500 outline-none text-slate-800">
-                                <p class="text-[9px] text-slate-400 italic">Capacidade de encolher.</p>
+                                <p id="hint-shrink" class="text-[9px] text-slate-400 italic">Capacidade de encolher.</p>
                             </div>
 
                             <!-- flex-basis -->
                             <div class="space-y-1">
-                                <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider flex justify-between">
-                                    <span>flex-basis</span>
-                                    <span class="text-[10px] text-teal-600 cursor-pointer" onclick="showHelpModal('flex-basis')"><i class="fa-regular fa-circle-question"></i></span>
-                                </label>
+                                <div class="flex items-center justify-between">
+                                    <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">flex-basis</label>
+                                    <button onclick="toggleItemNone('basis')" class="text-[9px] font-semibold text-red-500 hover:underline">none</button>
+                                </div>
                                 <input type="text" id="input-basis" placeholder="auto" oninput="updateItemProp('basis', this.value)" class="w-full bg-slate-50 border border-slate-200 rounded-lg py-1.5 px-3 text-sm font-semibold focus:ring-2 focus:ring-teal-500 outline-none text-slate-800">
-                                <p class="text-[9px] text-slate-400 italic">Ex: 100px, 20% ou auto.</p>
+                                <p id="hint-basis" class="text-[9px] text-slate-400 italic">Ex: 100px, 20% ou auto.</p>
                             </div>
 
                             <!-- align-self -->
                             <div class="space-y-1">
                                 <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider flex justify-between">
                                     <span>align-self</span>
-                                    <span class="text-[10px] text-teal-600 cursor-pointer" onclick="showHelpModal('align-self')"><i class="fa-regular fa-circle-question"></i></span>
                                 </label>
                                 <select id="select-align-self" onchange="updateItemProp('alignSelf', this.value)" class="w-full bg-slate-50 border border-slate-200 rounded-lg py-1.5 px-2 text-sm font-semibold focus:ring-2 focus:ring-teal-500 outline-none text-slate-800">
                                     <option value="auto">auto</option>
@@ -314,18 +324,19 @@
                                     <option value="center">center</option>
                                     <option value="baseline">baseline</option>
                                     <option value="stretch">stretch</option>
+                                    <option value="none" class="text-red-500 font-semibold">none (Desativado)</option>
                                 </select>
                                 <p class="text-[9px] text-slate-400 italic">Alinhamento vertical solo.</p>
                             </div>
 
                             <!-- order -->
                             <div class="space-y-1">
-                                <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider flex justify-between">
-                                    <span>order</span>
-                                    <span class="text-[10px] text-teal-600 cursor-pointer" onclick="showHelpModal('order')"><i class="fa-regular fa-circle-question"></i></span>
-                                </label>
+                                <div class="flex items-center justify-between">
+                                    <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">order</label>
+                                    <button onclick="toggleItemNone('order')" class="text-[9px] font-semibold text-red-500 hover:underline">none</button>
+                                </div>
                                 <input type="number" id="input-order" value="0" oninput="updateItemProp('order', this.value)" class="w-full bg-slate-50 border border-slate-200 rounded-lg py-1.5 px-3 text-sm font-semibold focus:ring-2 focus:ring-teal-500 outline-none text-slate-800">
-                                <p class="text-[9px] text-slate-400 italic">Ordem visual na fila.</p>
+                                <p id="hint-order" class="text-[9px] text-slate-400 italic">Ordem visual na fila.</p>
                             </div>
 
                         </div>
@@ -340,18 +351,12 @@
                             </button>
                         </div>
                         <pre class="code-preview font-mono text-xs sm:text-sm text-indigo-100 overflow-x-auto p-3 bg-slate-950/70 rounded-xl leading-relaxed">
-<span class="text-indigo-400">#sandbox-container</span> {
-  <span class="text-pink-400">display</span>: <span class="text-emerald-400" id="css-display">flex</span>;
-  <span class="text-pink-400">flex-direction</span>: <span class="text-emerald-400" id="css-direction">row</span>;
-  <span class="text-pink-400">justify-content</span>: <span class="text-emerald-400" id="css-justify">flex-start</span>;
-  <span class="text-pink-400">align-items</span>: <span class="text-emerald-400" id="css-align">stretch</span>;
-  <span class="text-pink-400">flex-wrap</span>: <span class="text-emerald-400" id="css-wrap">nowrap</span>;
-  <span class="text-pink-400">align-content</span>: <span class="text-emerald-400" id="css-align-content">stretch</span>;
-  <span class="text-pink-400">gap</span>: <span class="text-emerald-400" id="css-gap">16px</span>;
+<span class="text-indigo-400">#sandbox-container</span> {<span id="css-container-properties">
+  <span class="text-pink-400">display</span>: <span class="text-emerald-400">flex</span>;</span>
 }
 
 <span class="text-slate-500">/* CSS Customizado para Itens Flex Individuais */</span><span id="css-custom-items" class="text-indigo-300">
-/* Clique em um box acima para modificar propriedades dos filhos e ver o CSS correspondente aqui */</span>
+/* Clica num box acima para modificar propriedades dos filhos e ver o CSS correspondente aqui */</span>
                         </pre>
                     </div>
 
@@ -366,7 +371,7 @@
             <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8">
                 
                 <div class="text-center max-w-2xl mx-auto mb-8">
-                    <h2 class="text-2xl font-extrabold text-slate-900">Guia de Bolso do Flexbox CSS</h2>
+                    <h2 class="text-2xl font-extrabold text-slate-900">Guia Prático do Flexbox CSS</h2>
                     <p class="text-slate-500 mt-2">Diferencie perfeitamente as diretivas destinadas ao elemento pai (Container) das diretivas dos elementos filhos (Itens).</p>
                 </div>
 
@@ -384,8 +389,9 @@
                             <h4 class="font-mono font-bold text-indigo-600 text-base">display: flex | inline-flex</h4>
                             <p class="text-sm text-slate-600 mt-1">Define o container como flexível. Obrigatoriamente a primeira propriedade a ser declarada para habilitar o uso do Flexbox.</p>
                             <ul class="text-xs text-slate-500 mt-2 list-disc pl-4 space-y-1">
-                                <li><strong>flex:</strong> O container se comporta como um elemento de bloco.</li>
-                                <li><strong>inline-flex:</strong> O container se comporta como um elemento inline (lado a lado com outros inline).</li>
+                                <li><strong>flex:</strong> O container comporta-se como um elemento de bloco.</li>
+                                <li><strong>inline-flex:</strong> O container comporta-se como um elemento inline (lado a lado com outros inline).</li>
+                                <li><strong>none:</strong> Oculta completamente o container e todos os seus filhos da árvore visual.</li>
                             </ul>
                         </div>
 
@@ -398,6 +404,7 @@
                                 <li><strong>row-reverse:</strong> Direita para a esquerda.</li>
                                 <li><strong>column:</strong> Cima para baixo (vertical).</li>
                                 <li><strong>column-reverse:</strong> Baixo para cima.</li>
+                                <li><strong>none (Não aplicado):</strong> Remove a instrução de direção customizada, assumindo a predefinição do navegador.</li>
                             </ul>
                         </div>
 
@@ -411,6 +418,7 @@
                                 <li><strong>space-between:</strong> Primeiro colado à esquerda, último colado à direita.</li>
                                 <li><strong>space-around:</strong> Margens laterais idênticas para cada box.</li>
                                 <li><strong>space-evenly:</strong> Espaço em branco rigorosamente uniforme em todos os cantos.</li>
+                                <li><strong>none (Não aplicado):</strong> Suspende o efeito de alinhamento induzido.</li>
                             </ul>
                         </div>
 
@@ -419,21 +427,23 @@
                             <h4 class="font-mono font-bold text-indigo-600 text-base">align-items</h4>
                             <p class="text-sm text-slate-600 mt-1">Define o comportamento padrão de alinhamento vertical/transversal de todos os itens de uma mesma linha.</p>
                             <ul class="text-xs text-slate-500 mt-2 list-disc pl-4 space-y-1">
-                                <li><strong>stretch:</strong> Estica os filhos de forma uniforme até a altura máxima do pai.</li>
+                                <li><strong>stretch:</strong> Estica os filhos de forma uniforme até à altura máxima do pai.</li>
                                 <li><strong>flex-start / flex-end:</strong> Alinha no topo / na base.</li>
                                 <li><strong>center:</strong> Alinha de forma centralizada verticalmente.</li>
                                 <li><strong>baseline:</strong> Alinha os caracteres de texto na mesma linha invisível.</li>
+                                <li><strong>none (Não aplicado):</strong> Suspende a instrução de alinhamento.</li>
                             </ul>
                         </div>
 
                         <!-- Card flex-wrap -->
                         <div class="bg-slate-50 p-5 rounded-xl border border-slate-200/80 hover:border-indigo-400 transition-all">
                             <h4 class="font-mono font-bold text-indigo-600 text-base">flex-wrap</h4>
-                            <p class="text-sm text-slate-600 mt-1">Permite a quebra de linha quando o container fica pequeno demais para alojar todos os itens em uma única fileira.</p>
+                            <p class="text-sm text-slate-600 mt-1">Permite a quebra de linha quando o container fica pequeno demais para alojar todos os itens numa única fileira.</p>
                             <ul class="text-xs text-slate-500 mt-2 list-disc pl-4 space-y-1">
                                 <li><strong>nowrap:</strong> Espreme os itens impedindo a quebra de linha (padrão).</li>
                                 <li><strong>wrap:</strong> Permite que elementos que estourarem caiam para a fileira de baixo.</li>
                                 <li><strong>wrap-reverse:</strong> Inverte a posição das linhas geradas.</li>
+                                <li><strong>none (Não aplicado):</strong> Suspende a propriedade de quebra.</li>
                             </ul>
                         </div>
 
@@ -442,7 +452,7 @@
                             <h4 class="font-mono font-bold text-indigo-600 text-base">gap</h4>
                             <p class="text-sm text-slate-600 mt-1">Cria o espaçamento de forma automatizada entre os boxes internos do container de forma limpa.</p>
                             <ul class="text-xs text-slate-500 mt-2 list-disc pl-4 space-y-1">
-                                <li><strong>Elimina:</strong> O uso problemático e antigo de <code>margin</code> manual que gerava margens indesejadas nas extremidades externas do pai.</li>
+                                <li><strong>none (Não aplicado):</strong> Não injeta qualquer espaçamento padrão, colando os itens uns aos outros caso não possuam margem externa.</li>
                             </ul>
                         </div>
 
@@ -464,8 +474,8 @@
                             <p class="text-sm text-slate-600 mt-1">Capacidade de um item de se expandir de forma proporcional para preencher o espaço livre do container.</p>
                             <ul class="text-xs text-slate-500 mt-2 list-disc pl-4 space-y-1">
                                 <li><strong>0:</strong> Mantém tamanho padrão ou estipulado (padrão).</li>
-                                <li><strong>1:</strong> Preenche o espaço restante de maneira amigável.</li>
-                                <li><strong>2:</strong> Se outros possuírem valor 1, este item crescerá na proporção do dobro de sobra de tela.</li>
+                                <li><strong>1 / 2:</strong> Proporções de crescimento baseadas no espaço excedente.</li>
+                                <li><strong>none (Não aplicado):</strong> O item ignora o crescimento flexível estrutural.</li>
                             </ul>
                         </div>
 
@@ -475,7 +485,8 @@
                             <p class="text-sm text-slate-600 mt-1">Capacidade de um item de diminuir proporcionalmente de tamanho caso os tamanhos combinados de todos estourem o pai.</p>
                             <ul class="text-xs text-slate-500 mt-2 list-disc pl-4 space-y-1">
                                 <li><strong>1:</strong> Diminui de acordo com a proporção geral de todos os outros (padrão).</li>
-                                <li><strong>0:</strong> Recusa terminantemente o encolhimento, forçando overflow ou estiramento de layout para o lado externo se for o caso.</li>
+                                <li><strong>0:</strong> Recusa terminantemente o encolhimento.</li>
+                                <li><strong>none (Não aplicado):</strong> Suspende a especificação de encolhimento customizada.</li>
                             </ul>
                         </div>
 
@@ -484,8 +495,8 @@
                             <h4 class="font-mono font-bold text-teal-600 text-base">flex-basis</h4>
                             <p class="text-sm text-slate-600 mt-1">Define o tamanho base padrão inicial de um elemento antes que os fatores de encolhimento ou crescimento entrem em ação.</p>
                             <ul class="text-xs text-slate-500 mt-2 list-disc pl-4 space-y-1">
-                                <li><strong>auto:</strong> Utiliza as dimensões de largura (width) ou altura (height) definidas por CSS comum.</li>
-                                <li><strong>[valor px / %]:</strong> Define um tamanho estático, ex: <code>200px</code> ou <code>30%</code>.</li>
+                                <li><strong>auto:</strong> Utiliza as dimensões definidas de largura ou altura tradicionais.</li>
+                                <li><strong>none (Não aplicado):</strong> Retira a base definida, deixando a cargo do motor de renderização.</li>
                             </ul>
                         </div>
 
@@ -495,7 +506,7 @@
                             <p class="text-sm text-slate-600 mt-1">Permite a um item específico ignorar o alinhamento transversal (align-items) global determinado pelo pai.</p>
                             <ul class="text-xs text-slate-500 mt-2 list-disc pl-4 space-y-1">
                                 <li><strong>auto:</strong> Respeita o pai (padrão).</li>
-                                <li><strong>flex-start / flex-end:</strong> Sobe sozinho ou desce sozinho na vertical/eixo transversal.</li>
+                                <li><strong>none (Não aplicado):</strong> Não impõe nenhum alinhamento individual.</li>
                             </ul>
                         </div>
 
@@ -507,10 +518,9 @@
 
     </main>
 
-    <!-- FOOTER -->
+    <!-- RODAPÉ -->
     <footer class="mt-auto bg-slate-900 border-t border-slate-800 text-slate-500 text-xs py-6 text-center">
         <p>&copy; 2026 Flexbox Master - Material Interativo de Consulta Rápida.</p>
-        <p class="mt-1">Desenvolvido como ferramenta educacional avançada para desenvolvedores front-end.</p>
     </footer>
 
     <!-- MODAL DE DIÁLOGO EXPLICATIVO -->
@@ -579,7 +589,7 @@
             selectedItemId: null // ID do item atualmente selecionado para edição individual
         };
 
-        // Banco de Dados das ajudas teóricas
+        // Banco de Dados das ajudas teóricas traduzidas para pt-PT
         const HELP_DATABASE = {
             'flex-direction': {
                 title: 'Eixo Principal: flex-direction',
@@ -590,6 +600,7 @@
                     <p>• <strong>row-reverse</strong>: Itens da direita para a esquerda.</p>
                     <p>• <strong>column</strong>: De cima para baixo. Transforma o eixo principal em vertical.</p>
                     <p>• <strong>column-reverse</strong>: De baixo para cima.</p>
+                    <p>• <strong>none (Não aplicado)</strong>: Suspende o efeito da propriedade.</p>
                 `
             },
             'justify-content': {
@@ -604,6 +615,7 @@
                     <p>• <strong>space-between</strong>: Distribuição idêntica; itens das pontas grudam nas bordas do pai.</p>
                     <p>• <strong>space-around</strong>: Distribui o espaço ao redor dos itens; as extremidades externas têm metade da largura do espaçamento interno.</p>
                     <p>• <strong>space-evenly</strong>: Distribuição rigorosa. Todos os vãos e bordas têm exatamente a mesma dimensão.</p>
+                    <p>• <strong>none (Não aplicado)</strong>: Suspende o efeito da propriedade.</p>
                 `
             },
             'align-items': {
@@ -616,6 +628,7 @@
                     <p>• <strong>flex-end</strong>: Alinha os itens na margem final (base).</p>
                     <p>• <strong>center</strong>: Centraliza verticalmente de forma harmoniosa.</p>
                     <p>• <strong>baseline</strong>: Alinha todos usando como ponto base a linha da tipografia do primeiro caractere interno.</p>
+                    <p>• <strong>none (Não aplicado)</strong>: Suspende o efeito da propriedade.</p>
                 `
             },
             'flex-wrap': {
@@ -626,6 +639,7 @@
                     <p>• <strong>nowrap (Padrão)</strong>: Todos os itens espremem-se para ficar em uma única linha, reduzindo-se além do esperado ou vazando a borda se preciso.</p>
                     <p>• <strong>wrap</strong>: Os itens que excederem o espaço útil cairão graciosamente para a linha seguinte.</p>
                     <p>• <strong>wrap-reverse</strong>: Realiza a quebra empilhando as novas fileiras para cima ao invés de para baixo.</p>
+                    <p>• <strong>none (Não aplicado)</strong>: Suspende o efeito da propriedade.</p>
                 `
             },
             'flex-grow': {
@@ -635,6 +649,7 @@
                     <p>Define a habilidade de um flex item específico <strong>crescer</strong> para ocupar o espaço em branco restante no container pai.</p>
                     <p>Se todos os itens tiverem <code>flex-grow: 1</code>, o espaço extra no container será distribuído igualmente entre todos.</p>
                     <p>Se um dos itens tiver <code>flex-grow: 2</code>, ele receberá duas vezes mais espaço extra disponível que os demais.</p>
+                    <p>• <strong>none (Não aplicado)</strong>: Suspende o efeito desta propriedade.</p>
                 `
             },
             'flex-shrink': {
@@ -644,6 +659,7 @@
                     <p>Define a habilidade de um item específico de <strong>encolher</strong> proporcionalmente caso o espaço do pai fique muito apertado.</p>
                     <p>• <strong>1 (Padrão)</strong>: O item diminui de tamanho para caber junto dos demais.</p>
                     <p>• <strong>0</strong>: O item recusa-se a encolher, mantendo rigorosamente sua largura base estipulada e podendo forçar a quebra ou overflow.</p>
+                    <p>• <strong>none (Não aplicado)</strong>: Suspende o efeito desta propriedade.</p>
                 `
             },
             'flex-basis': {
@@ -652,6 +668,7 @@
                 body: `
                     <p>Define o tamanho padrão ou inicial de um item antes que o restante do espaço útil seja distribuído pelo <code>flex-grow</code> ou encolhido pelo <code>flex-shrink</code>.</p>
                     <p>Pode receber valores como <code>200px</code>, <code>20%</code>, <code>15rem</code> ou <code>auto</code>.</p>
+                    <p>• <strong>none (Não aplicado)</strong>: Suspende o efeito desta propriedade.</p>
                 `
             },
             'align-self': {
@@ -660,6 +677,7 @@
                 body: `
                     <p>Permite que um único flex item <strong>sobrescreva</strong> o alinhamento transversal global estipulado no <code>align-items</code> do pai.</p>
                     <p>Isso permite alinhamentos pontuais elegantes, como mandar um único item para o fim da fila vertical enquanto os outros continuam no topo.</p>
+                    <p>• <strong>none (Não aplicado)</strong>: Suspende o efeito desta propriedade.</p>
                 `
             },
             'order': {
@@ -669,6 +687,7 @@
                     <p>Por padrão, os itens flex são exibidos na ordem exata de escrita no HTML.</p>
                     <p>A propriedade <strong>order</strong> altera a ordem visual desses itens sem modificar a árvore DOM.</p>
                     <p>Itens com valores menores (ex: -1) aparecem antes de itens com valores normais ou maiores (ex: 1).</p>
+                    <p>• <strong>none (Não aplicado)</strong>: Suspende o efeito desta propriedade.</p>
                 `
             }
         };
@@ -683,13 +702,11 @@
             if (tab === 'playground') {
                 tabPlayground.classList.remove('hidden');
                 tabGuide.classList.add('hidden');
-                
                 btnPlayground.className = "flex-1 md:flex-initial flex items-center justify-center gap-2 px-5 py-2 rounded-lg font-semibold text-sm transition-all bg-indigo-600 text-white shadow-md shadow-indigo-600/10";
                 btnGuide.className = "flex-1 md:flex-initial flex items-center justify-center gap-2 px-5 py-2 rounded-lg font-semibold text-sm transition-all text-slate-400 hover:text-white";
             } else {
                 tabPlayground.classList.add('hidden');
                 tabGuide.classList.remove('hidden');
-
                 btnPlayground.className = "flex-1 md:flex-initial flex items-center justify-center gap-2 px-5 py-2 rounded-lg font-semibold text-sm transition-all text-slate-400 hover:text-white";
                 btnGuide.className = "flex-1 md:flex-initial flex items-center justify-center gap-2 px-5 py-2 rounded-lg font-semibold text-sm transition-all bg-indigo-600 text-white shadow-md shadow-indigo-600/10";
             }
@@ -725,12 +742,12 @@
                 itemEl.id = `sandbox-item-${item.id}`;
                 itemEl.className = `box bg-gradient-to-br ${BOX_COLORS[index % BOX_COLORS.length]} text-white font-extrabold text-sm sm:text-base flex flex-col justify-center items-center shadow-md border border-white/20 rounded-xl p-3 cursor-pointer select-none transition-all duration-300 min-w-[70px] min-h-[60px]`;
                 
-                // Atribui estilos individuais do estado atualizados pelo usuário
-                itemEl.style.flexGrow = item.grow;
-                itemEl.style.flexShrink = item.shrink;
-                itemEl.style.flexBasis = item.basis;
-                itemEl.style.alignSelf = item.alignSelf;
-                itemEl.style.order = item.order;
+                // Atribui estilos individuais do estado (caso não seja "none")
+                itemEl.style.flexGrow = item.grow === 'none' ? '' : item.grow;
+                itemEl.style.flexShrink = item.shrink === 'none' ? '' : item.shrink;
+                itemEl.style.flexBasis = item.basis === 'none' ? '' : item.basis;
+                itemEl.style.alignSelf = item.alignSelf === 'none' ? '' : item.alignSelf;
+                itemEl.style.order = item.order === 'none' ? '' : item.order;
 
                 // Destaca se for o item ativo para edição
                 if (state.selectedItemId === item.id) {
@@ -742,22 +759,29 @@
                     <span class="text-xs font-mono bg-black/20 px-1.5 py-0.5 rounded-md mb-1">#${item.id}</span>
                 `;
 
-                // Adiciona marcas visuais das propriedades se modificadas
-                if (item.grow > 0) {
+                // Adiciona marcas visuais das propriedades se modificadas e válidas
+                if (item.grow !== 'none' && item.grow > 0) {
                     childContent += `<span class="text-[9px] font-mono text-emerald-200">grow:${item.grow}</span>`;
                 }
-                if (item.shrink !== 1) {
+                if (item.shrink !== 'none' && item.shrink !== 1) {
                     childContent += `<span class="text-[9px] font-mono text-rose-200">shrink:${item.shrink}</span>`;
                 }
-                if (item.basis !== 'auto') {
+                if (item.basis !== 'none' && item.basis !== 'auto') {
                     childContent += `<span class="text-[9px] font-mono text-amber-200">basis:${item.basis}</span>`;
                 }
-                if (item.alignSelf !== 'auto') {
+                if (item.alignSelf !== 'none' && item.alignSelf !== 'auto') {
                     childContent += `<span class="text-[9px] font-mono text-purple-200">self:${item.alignSelf}</span>`;
                 }
-                if (item.order !== 0) {
+                if (item.order !== 'none' && item.order !== 0) {
                     childContent += `<span class="text-[9px] font-mono text-sky-200">order:${item.order}</span>`;
                 }
+
+                // Identificadores de efeito "none" suspenso
+                if (item.grow === 'none') childContent += `<span class="text-[8px] opacity-80 line-through text-red-300">grow:none</span>`;
+                if (item.shrink === 'none') childContent += `<span class="text-[8px] opacity-80 line-through text-red-300">shrink:none</span>`;
+                if (item.basis === 'none') childContent += `<span class="text-[8px] opacity-80 line-through text-red-300">basis:none</span>`;
+                if (item.alignSelf === 'none') childContent += `<span class="text-[8px] opacity-80 line-through text-red-300">self:none</span>`;
+                if (item.order === 'none') childContent += `<span class="text-[8px] opacity-80 line-through text-red-300">order:none</span>`;
 
                 itemEl.innerHTML = childContent;
 
@@ -788,15 +812,41 @@
             if (item) {
                 document.getElementById('selected-item-display').innerHTML = `<span class="text-indigo-600 font-mono">Box #${item.id}</span>`;
                 
-                // Carrega valores vigentes nos inputs
-                document.getElementById('input-grow').value = item.grow;
-                document.getElementById('input-shrink').value = item.shrink;
-                document.getElementById('input-basis').value = item.basis === 'auto' ? '' : item.basis;
+                // Carrega valores vigentes nos inputs ou limpa se "none"
+                setInputValue('grow', item.grow);
+                setInputValue('shrink', item.shrink);
+                setInputValue('basis', item.basis);
+                setInputValue('order', item.order);
+                
                 document.getElementById('select-align-self').value = item.alignSelf;
-                document.getElementById('input-order').value = item.order;
             }
 
             renderItems();
+        }
+
+        // Helper para colocar valores nos inputs de forma limpa tratando o estado "none"
+        function setInputValue(type, val) {
+            const input = document.getElementById(`input-${type}`);
+            const hint = document.getElementById(`hint-${type}`);
+            
+            if (val === 'none') {
+                input.value = '';
+                input.disabled = true;
+                input.placeholder = 'none (Desativado)';
+                if (hint) hint.className = "text-[9px] text-red-500 font-semibold italic";
+                if (hint) hint.textContent = "Efeito suspenso (none).";
+            } else {
+                input.disabled = false;
+                input.value = (type === 'basis' && val === 'auto') ? '' : val;
+                input.placeholder = type === 'basis' ? 'auto' : '0';
+                if (hint) hint.className = "text-[9px] text-slate-400 italic";
+                if (hint) {
+                    if (type === 'grow') hint.textContent = "Capacidade de crescer.";
+                    if (type === 'shrink') hint.textContent = "Capacidade de encolher.";
+                    if (type === 'basis') hint.textContent = "Ex: 100px, 20% ou auto.";
+                    if (type === 'order') hint.textContent = "Ordem visual na fila.";
+                }
+            }
         }
 
         // Limpa seleção do box de edição individual
@@ -811,10 +861,14 @@
 
             // Limpa inputs
             document.getElementById('input-grow').value = 0;
+            document.getElementById('input-grow').disabled = false;
             document.getElementById('input-shrink').value = 1;
+            document.getElementById('input-shrink').disabled = false;
             document.getElementById('input-basis').value = '';
+            document.getElementById('input-basis').disabled = false;
             document.getElementById('select-align-self').value = 'auto';
             document.getElementById('input-order').value = 0;
+            document.getElementById('input-order').disabled = false;
 
             renderItems();
         }
@@ -825,22 +879,35 @@
             
             // Re-aplica no elemento DOM visualizador real
             const sandbox = document.getElementById('flex-items-container');
-            sandbox.style[propName] = val;
+            
+            if (val === 'none') {
+                sandbox.style[propName] = ''; // Limpa a regra inline do elemento
+            } else {
+                sandbox.style[propName] = val;
+            }
 
-            // Tratamento especial para botão display flex/inline-flex
+            // Tratamento especial para botão display flex/inline-flex/none
             if (propName === 'display') {
                 const btnFlex = document.getElementById('disp-flex');
                 const btnInline = document.getElementById('disp-inline');
+                const btnNone = document.getElementById('disp-none');
+                
+                // Garante que resetamos as classes
+                btnFlex.className = btnInline.className = btnNone.className = "py-1.5 px-2 text-xs sm:text-sm font-semibold rounded-lg border border-slate-200 text-slate-600 transition hover:border-indigo-600";
+                
                 if (val === 'flex') {
-                    btnFlex.className = "py-2 px-3 text-sm font-semibold rounded-lg border border-indigo-600 bg-indigo-50 text-indigo-700 transition";
-                    btnInline.className = "py-2 px-3 text-sm font-semibold rounded-lg border border-slate-200 hover:border-indigo-600 text-slate-600 transition";
-                } else {
-                    btnFlex.className = "py-2 px-3 text-sm font-semibold rounded-lg border border-slate-200 hover:border-indigo-600 text-slate-600 transition";
-                    btnInline.className = "py-2 px-3 text-sm font-semibold rounded-lg border border-indigo-600 bg-indigo-50 text-indigo-700 transition";
+                    btnFlex.className = "py-1.5 px-2 text-xs sm:text-sm font-semibold rounded-lg border border-indigo-600 bg-indigo-50 text-indigo-700 transition";
+                } else if (val === 'inline-flex') {
+                    btnInline.className = "py-1.5 px-2 text-xs sm:text-sm font-semibold rounded-lg border border-indigo-600 bg-indigo-50 text-indigo-700 transition";
+                } else if (val === 'none') {
+                    btnNone.className = "py-1.5 px-2 text-xs sm:text-sm font-semibold rounded-lg border border-red-600 bg-red-50 text-red-700 transition";
                 }
+
+                // Atualiza cabeçalho visual com o valor de display atualizado
+                document.getElementById('visualizer-display-tag').textContent = `#sandbox-container { display: ${val}; }`;
             }
 
-            // Tratamento especial para habilitar align-content (Apenas quando wrap está ativo)
+            // Tratamento especial para habilitar align-content (Apenas quando wrap está ativo e não é none)
             if (propName === 'flexWrap') {
                 const contentGroup = document.getElementById('container-align-content');
                 const contentSelect = document.getElementById('select-align-content');
@@ -858,15 +925,35 @@
 
             // Atualiza o indicador do Gap
             if (propName === 'gap') {
-                document.getElementById('label-gap').textContent = val;
+                if (val !== 'none') {
+                    document.getElementById('label-gap').textContent = val;
+                    document.getElementById('gap-slider-wrapper').classList.remove('hidden');
+                    document.getElementById('gap-none-indicator').classList.add('hidden');
+                }
             }
 
             updateCSSOutput();
         }
 
+        // Suspende/Ativa de forma direta o efeito da propriedade GAP (none)
+        function toggleGapNone() {
+            const isNone = state.container.gap === 'none';
+            if (isNone) {
+                // Ativa novamente com o valor do input atual
+                const val = document.getElementById('range-gap').value + 'px';
+                updateProp('gap', val);
+            } else {
+                updateProp('gap', 'none');
+                document.getElementById('gap-slider-wrapper').classList.add('hidden');
+                document.getElementById('gap-none-indicator').classList.remove('hidden');
+                const sandbox = document.getElementById('flex-items-container');
+                sandbox.style.gap = '';
+            }
+        }
+
         // Altera a altura simulada do painel do container flexível
         function updateContainerHeight(val) {
-            document.getElementById('sandbox-container').style.height = val + 'px';
+            document.getElementById('sandbox-container-wrapper').style.height = val + 'px';
             document.getElementById('label-height').textContent = val + 'px';
         }
 
@@ -877,13 +964,34 @@
             const item = state.items.find(i => i.id === state.selectedItemId);
             if (!item) return;
 
-            if (propType === 'grow') item.grow = parseInt(val) || 0;
-            if (propType === 'shrink') item.shrink = parseInt(val) || 0;
-            if (propType === 'basis') item.basis = val.trim() === '' ? 'auto' : val;
+            if (propType === 'grow') item.grow = val === 'none' ? 'none' : (parseInt(val) || 0);
+            if (propType === 'shrink') item.shrink = val === 'none' ? 'none' : (parseInt(val) || 0);
+            if (propType === 'basis') item.basis = val === 'none' ? 'none' : (val.trim() === '' ? 'auto' : val);
             if (propType === 'alignSelf') item.alignSelf = val;
-            if (propType === 'order') item.order = parseInt(val) || 0;
+            if (propType === 'order') item.order = val === 'none' ? 'none' : (parseInt(val) || 0);
 
             renderItems();
+        }
+
+        // Toggles rápidos para suspender (None) e reativar propriedades numéricas do Item Flex
+        function toggleItemNone(type) {
+            if (state.selectedItemId === null) return;
+            const item = state.items.find(i => i.id === state.selectedItemId);
+            if (!item) return;
+
+            const currentVal = item[type];
+            if (currentVal === 'none') {
+                // Reativa para valor padrão padrão do navegador/estado
+                let defaultVal = 0;
+                if (type === 'shrink') defaultVal = 1;
+                if (type === 'basis') defaultVal = 'auto';
+                
+                updateItemProp(type, defaultVal);
+                setInputValue(type, defaultVal);
+            } else {
+                updateItemProp(type, 'none');
+                setInputValue(type, 'none');
+            }
         }
 
         // Reseta as propriedades do item ativo selecionado
@@ -911,7 +1019,7 @@
                 state.items.push({ id: newId, grow: 0, shrink: 1, basis: 'auto', alignSelf: 'auto', order: 0 });
             } else {
                 if (state.items.length <= 1) {
-                    showToast('Você precisa manter pelo menos 1 box para testar.');
+                    showToast('Precisa de manter pelo menos 1 box para simulação.');
                     return;
                 }
                 const removed = state.items.pop();
@@ -942,6 +1050,8 @@
             document.getElementById('select-align-content').value = 'stretch';
             document.getElementById('range-gap').value = 16;
             document.getElementById('label-gap').textContent = '16px';
+            document.getElementById('gap-slider-wrapper').classList.remove('hidden');
+            document.getElementById('gap-none-indicator').classList.add('hidden');
 
             const container = document.getElementById('flex-items-container');
             container.style.display = 'flex';
@@ -956,40 +1066,75 @@
             document.getElementById('container-align-content').classList.add('opacity-50');
             document.getElementById('select-align-content').disabled = true;
 
+            // Altera displays e botões
+            document.getElementById('disp-flex').className = "py-1.5 px-2 text-xs sm:text-sm font-semibold rounded-lg border border-indigo-600 bg-indigo-50 text-indigo-700 transition";
+            document.getElementById('disp-inline').className = document.getElementById('disp-none').className = "py-1.5 px-2 text-xs sm:text-sm font-semibold rounded-lg border border-slate-200 text-slate-600 hover:border-indigo-600 transition";
+            document.getElementById('visualizer-display-tag').textContent = `#sandbox-container { display: flex; }`;
+
             updateCSSOutput();
-            showToast('Valores do Flex Container resetados!');
+            showToast('Valores do Flex Container reiniciados!');
         }
 
-        // Atualiza a visualização do painel de CSS Dinâmico
+        // Atualiza a visualização do painel de CSS Dinâmico (omitindo as propriedades definidas como "none")
         function updateCSSOutput() {
-            document.getElementById('css-display').textContent = state.container.display;
-            document.getElementById('css-direction').textContent = state.container.flexDirection;
-            document.getElementById('css-justify').textContent = state.container.justifyContent;
-            document.getElementById('css-align').textContent = state.container.alignItems;
-            document.getElementById('css-wrap').textContent = state.container.flexWrap;
-            document.getElementById('css-align-content').textContent = state.container.alignContent;
-            document.getElementById('css-gap').textContent = state.container.gap;
+            let containerPropertiesCss = '';
+
+            if (state.container.display !== 'none') {
+                containerPropertiesCss += `\n  <span class="text-pink-400">display</span>: <span class="text-emerald-400">${state.container.display}</span>;`;
+            } else {
+                containerPropertiesCss += `\n  <span class="text-pink-400">display</span>: <span class="text-emerald-400">none</span>; <span class="text-slate-500">/* Oculta o container inteiro */</span>`;
+            }
+
+            if (state.container.flexDirection !== 'none') {
+                containerPropertiesCss += `\n  <span class="text-pink-400">flex-direction</span>: <span class="text-emerald-400">${state.container.flexDirection}</span>;`;
+            }
+            if (state.container.justifyContent !== 'none') {
+                containerPropertiesCss += `\n  <span class="text-pink-400">justify-content</span>: <span class="text-emerald-400">${state.container.justifyContent}</span>;`;
+            }
+            if (state.container.alignItems !== 'none') {
+                containerPropertiesCss += `\n  <span class="text-pink-400">align-items</span>: <span class="text-emerald-400">${state.container.alignItems}</span>;`;
+            }
+            if (state.container.flexWrap !== 'none') {
+                containerPropertiesCss += `\n  <span class="text-pink-400">flex-wrap</span>: <span class="text-emerald-400">${state.container.flexWrap}</span>;`;
+            }
+            // Só exibe align-content se wrapping estiver activo e não for none
+            if ((state.container.flexWrap === 'wrap' || state.container.flexWrap === 'wrap-reverse') && state.container.alignContent !== 'none') {
+                containerPropertiesCss += `\n  <span class="text-pink-400">align-content</span>: <span class="text-emerald-400">${state.container.alignContent}</span>;`;
+            }
+            if (state.container.gap !== 'none') {
+                containerPropertiesCss += `\n  <span class="text-pink-400">gap</span>: <span class="text-emerald-400">${state.container.gap}</span>;`;
+            }
+
+            document.getElementById('css-container-properties').innerHTML = containerPropertiesCss;
 
             // Varre itens para gerar CSS de filhos modificados
             const customItemsCssContainer = document.getElementById('css-custom-items');
             let customItemsCss = '';
 
             state.items.forEach(item => {
-                const isModified = item.grow !== 0 || item.shrink !== 1 || item.basis !== 'auto' || item.alignSelf !== 'auto' || item.order !== 0;
+                const isModified = item.grow !== 0 || item.shrink !== 1 || item.basis !== 'auto' || item.alignSelf !== 'auto' || item.order !== 0 ||
+                                   item.grow === 'none' || item.shrink === 'none' || item.basis === 'none' || item.alignSelf === 'none' || item.order === 'none';
                 
                 if (isModified) {
                     customItemsCss += `\n<span class="text-indigo-400">#flex-item-${item.id}</span> {\n`;
-                    if (item.grow !== 0) customItemsCss += `  <span class="text-pink-400">flex-grow</span>: <span class="text-emerald-400">${item.grow}</span>;\n`;
-                    if (item.shrink !== 1) customItemsCss += `  <span class="text-pink-400">flex-shrink</span>: <span class="text-emerald-400">${item.shrink}</span>;\n`;
-                    if (item.basis !== 'auto') customItemsCss += `  <span class="text-pink-400">flex-basis</span>: <span class="text-emerald-400">${item.basis}</span>;\n`;
-                    if (item.alignSelf !== 'auto') customItemsCss += `  <span class="text-pink-400">align-self</span>: <span class="text-emerald-400">${item.alignSelf}</span>;\n`;
-                    if (item.order !== 0) customItemsCss += `  <span class="text-pink-400">order</span>: <span class="text-emerald-400">${item.order}</span>;\n`;
+                    if (item.grow !== 'none' && item.grow !== 0) customItemsCss += `  <span class="text-pink-400">flex-grow</span>: <span class="text-emerald-400">${item.grow}</span>;\n`;
+                    if (item.shrink !== 'none' && item.shrink !== 1) customItemsCss += `  <span class="text-pink-400">flex-shrink</span>: <span class="text-emerald-400">${item.shrink}</span>;\n`;
+                    if (item.basis !== 'none' && item.basis !== 'auto') customItemsCss += `  <span class="text-pink-400">flex-basis</span>: <span class="text-emerald-400">${item.basis}</span>;\n`;
+                    if (item.alignSelf !== 'none' && item.alignSelf !== 'auto') customItemsCss += `  <span class="text-pink-400">align-self</span>: <span class="text-emerald-400">${item.alignSelf}</span>;\n`;
+                    if (item.order !== 'none' && item.order !== 0) customItemsCss += `  <span class="text-pink-400">order</span>: <span class="text-emerald-400">${item.order}</span>;\n`;
+                    
+                    // Comentários explicativos se as propriedades forem desativadas como "none"
+                    if (item.grow === 'none') customItemsCss += `  <span class="text-slate-500">/* flex-grow: none; (Propriedade suspensa) */</span>\n`;
+                    if (item.shrink === 'none') customItemsCss += `  <span class="text-slate-500">/* flex-shrink: none; (Propriedade suspensa) */</span>\n`;
+                    if (item.basis === 'none') customItemsCss += `  <span class="text-slate-500">/* flex-basis: none; (Propriedade suspensa) */</span>\n`;
+                    if (item.alignSelf === 'none') customItemsCss += `  <span class="text-slate-500">/* align-self: none; (Propriedade suspensa) */</span>\n`;
+                    if (item.order === 'none') customItemsCss += `  <span class="text-slate-500">/* order: none; (Propriedade suspensa) */</span>\n`;
                     customItemsCss += `}`;
                 }
             });
 
             if (customItemsCss === '') {
-                customItemsCssContainer.innerHTML = '\n/* Clique em um box acima para modificar propriedades dos filhos e ver o CSS correspondente aqui */';
+                customItemsCssContainer.innerHTML = '\n/* Clica num box acima para modificar propriedades dos filhos e ver o CSS correspondente aqui */';
             } else {
                 customItemsCssContainer.innerHTML = customItemsCss;
             }
@@ -997,23 +1142,40 @@
 
         // Auxiliar de cópia de código para a área de transferência
         function copyGeneratedCSS() {
-            // Montagem do texto puro de CSS para cópia
-            let cssText = `#sandbox-container {\n  display: ${state.container.display};\n  flex-direction: ${state.container.flexDirection};\n  justify-content: ${state.container.justifyContent};\n  align-items: ${state.container.alignItems};\n  flex-wrap: ${state.container.flexWrap};\n  align-content: ${state.container.alignContent};\n  gap: ${state.container.gap};\n}\n`;
+            let cssText = `#sandbox-container {\n`;
+            if (state.container.display !== 'none') cssText += `  display: ${state.container.display};\n`;
+            else cssText += `  display: none; /* Oculta o container inteiro */\n`;
+
+            if (state.container.flexDirection !== 'none') cssText += `  flex-direction: ${state.container.flexDirection};\n`;
+            if (state.container.justifyContent !== 'none') cssText += `  justify-content: ${state.container.justifyContent};\n`;
+            if (state.container.alignItems !== 'none') cssText += `  align-items: ${state.container.alignItems};\n`;
+            if (state.container.flexWrap !== 'none') cssText += `  flex-wrap: ${state.container.flexWrap};\n`;
+            if ((state.container.flexWrap === 'wrap' || state.container.flexWrap === 'wrap-reverse') && state.container.alignContent !== 'none') {
+                cssText += `  align-content: ${state.container.alignContent};\n`;
+            }
+            if (state.container.gap !== 'none') cssText += `  gap: ${state.container.gap};\n`;
+            cssText += `}\n`;
 
             state.items.forEach(item => {
-                const isModified = item.grow !== 0 || item.shrink !== 1 || item.basis !== 'auto' || item.alignSelf !== 'auto' || item.order !== 0;
+                const isModified = item.grow !== 0 || item.shrink !== 1 || item.basis !== 'auto' || item.alignSelf !== 'auto' || item.order !== 0 ||
+                                   item.grow === 'none' || item.shrink === 'none' || item.basis === 'none' || item.alignSelf === 'none' || item.order === 'none';
                 if (isModified) {
                     cssText += `\n#flex-item-${item.id} {\n`;
-                    if (item.grow !== 0) cssText += `  flex-grow: ${item.grow};\n`;
-                    if (item.shrink !== 1) cssText += `  flex-shrink: ${item.shrink};\n`;
-                    if (item.basis !== 'auto') cssText += `  flex-basis: ${item.basis};\n`;
-                    if (item.alignSelf !== 'auto') cssText += `  align-self: ${item.alignSelf};\n`;
-                    if (item.order !== 0) cssText += `  order: ${item.order};\n`;
+                    if (item.grow !== 'none' && item.grow !== 0) cssText += `  flex-grow: ${item.grow};\n`;
+                    if (item.shrink !== 'none' && item.shrink !== 1) cssText += `  flex-shrink: ${item.shrink};\n`;
+                    if (item.basis !== 'none' && item.basis !== 'auto') cssText += `  flex-basis: ${item.basis};\n`;
+                    if (item.alignSelf !== 'none' && item.alignSelf !== 'auto') cssText += `  align-self: ${item.alignSelf};\n`;
+                    if (item.order !== 'none' && item.order !== 0) cssText += `  order: ${item.order};\n`;
+                    
+                    if (item.grow === 'none') cssText += `  /* flex-grow suspenso */\n`;
+                    if (item.shrink === 'none') cssText += `  /* flex-shrink suspenso */\n`;
+                    if (item.basis === 'none') cssText += `  /* flex-basis suspenso */\n`;
+                    if (item.alignSelf === 'none') cssText += `  /* align-self suspenso */\n`;
+                    if (item.order === 'none') cssText += `  /* order suspenso */\n`;
                     cssText += `}\n`;
                 }
             });
 
-            // Fallback de cópia seguro para iFrame
             const dummy = document.createElement('textarea');
             document.body.appendChild(dummy);
             dummy.value = cssText;
@@ -1045,7 +1207,6 @@
 
         // Inicialização primária ao carregar a página
         window.onload = function() {
-            // Aplica os estilos iniciais reativos do pai
             const sandbox = document.getElementById('flex-items-container');
             Object.keys(state.container).forEach(key => {
                 sandbox.style[key] = state.container[key];
